@@ -1,0 +1,193 @@
+/* src/app/hotels/hotel-list/hotel-list.scss - 手機保持橫向佈局優化版 */
+
+$primary-color: #007bff;
+$secondary-color: #f8f9fa;
+$border-color: #e9ecef;
+$price-color: #dc3545;
+$shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+.hotel-list-container {
+  padding: 30px 20px;
+  max-width: 1000px;
+  margin: 70px auto 30px auto;
+}
+
+h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  border-bottom: 2px solid $border-color;
+  padding-bottom: 10px;
+}
+
+.hotel-card {
+  display: flex; // 保持橫向排列
+  background-color: white;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  box-shadow: $shadow-light;
+  transition: transform 0.3s, box-shadow 0.3s;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* --- 圖片區域 --- */
+
+.image-wrapper {
+  flex-shrink: 0; 
+  width: 30%; 
+  min-width: 250px; 
+  height: 200px;
+  overflow: hidden;
+}
+
+.hotel-image {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- 資訊區域 --- */
+
+.hotel-details {
+  flex-grow: 1;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hotel-name {
+  color: #212529;
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.hotel-rating {
+  font-size: 0.95rem;
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+
+.star {
+  color: #ffc107;
+  font-size: 1.1rem;
+}
+
+/* --- 價格和按鈕區域 --- */
+
+.pricing-area {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: auto;
+  padding-top: 10px;
+  gap: 20px;
+}
+
+.price-info {
+  text-align: right;
+  line-height: 1.2;
+}
+
+.price-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.price-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: $price-color;
+}
+
+.action-button {
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+// ============== 手機響應式調整 (保持橫向) ==============
+
+@media (max-width: 768px) {
+  .hotel-list-container {
+    padding: 15px 10px; // 減少外邊距
+  }
+  
+  .hotel-card {
+    // ⚠️ 關鍵調整：保持 display: flex; 不設定 flex-direction: column;
+    height: 150px; // 降低卡片高度，使其在手機上更緊湊
+  }
+
+  .image-wrapper {
+    width: 120px; // 圖片縮小至較小寬度
+    min-width: 120px;
+    height: 100%;
+  }
+
+  .hotel-details {
+    padding: 10px 15px; // 減少內邊距
+  }
+
+  .hotel-name {
+    font-size: 1.2rem; // 縮小標題字體
+  }
+  
+  .hotel-rating {
+    margin-bottom: 5px;
+  }
+  
+  .pricing-area {
+    // 價格和按鈕在底部保持橫向排列，且佔用空間
+    flex-direction: row; 
+    justify-content: space-between; // 價格和按鈕分置左右
+    align-items: center;
+    width: 100%;
+    padding-top: 0;
+    gap: 10px;
+  }
+  
+  .price-value {
+    font-size: 1.4rem; // 縮小價格字體
+  }
+  
+  .action-button {
+    padding: 8px 15px; // 縮小按鈕
+    font-size: 0.9rem;
+  }
+}
+.hotel-fav{
+  position: absolute;
+  right: 30px;
+}
+.hotel-fav img{
+  width: 20px;
+}
+.hotel-rating{
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    
+}
+.hotel-rating .icon {
+  width: 15px;
+  margin-right: 5px;
+}

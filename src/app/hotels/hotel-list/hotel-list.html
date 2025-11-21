@@ -1,0 +1,37 @@
+<div class="hotel-list-container">
+  <h2>🌟 推薦飯店列表</h2>
+  
+  @for (hotel of hotels; track hotel.hotel_id) {
+    <div class="hotel-card">
+        <div class="image-wrapper">
+        <img [src]="hotel.imageUrl" [alt]="hotel.name" class="hotel-image">
+        </div>
+      
+        <div class="hotel-details">
+          @if(hotel.favorite){
+            <span class="hotel-fav"> 
+              <img src="assets/icons/hotel-fav.svg" alt="favorite" class="icon"> 
+            </span>
+          }
+            
+            <div> 
+                <h3 class="hotel-name">{{ hotel.name }}</h3>
+                <p class="hotel-rating">
+                  <img src="assets/icons/hotel-rating.svg" alt="rating" class="icon"> 
+                  {{hotel.rating}}
+                </p>
+            </div>
+
+            <div class="pricing-area"> 
+                <div class="price-info">
+                    <span class="price-label">每晚價格</span>
+                    <span class="price-value">NT$ {{ hotel.price | number:'1.0-0' }}</span>
+                </div>
+                <button class="action-button" (click)="goToRoom(hotel.hotel_id)">立即預訂</button>
+            </div>
+        </div>
+    </div>
+  } @empty {
+    <p class="empty-state">目前沒有飯店資訊可供顯示。</p>
+  }
+</div>
