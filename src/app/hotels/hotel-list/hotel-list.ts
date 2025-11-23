@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit , inject} from '@angular/core'; // 1. 導入 OnInit 生命週期鉤子
 import { HotelService } from '../../service/hotelService';
-import { Hotel } from '../../interface/IHotelList';
+import { IHotel } from '../../interface/IHotelList';
 import { ActivatedRoute, Router } from '@angular/router';
 
 // 2. 定義資料結構（TypeScript Interface）
@@ -17,7 +17,7 @@ export class HotelList implements OnInit, OnDestroy {
   private hotelServie = inject(HotelService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
-  hotels: Hotel[] = [];
+  hotels: IHotel[] = [];
 
 
 

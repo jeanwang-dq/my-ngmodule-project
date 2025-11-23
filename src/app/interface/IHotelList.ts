@@ -1,4 +1,4 @@
-export interface Hotel {
+export interface IHotel {
   hotel_id: number;
   name: string;
   price: number;

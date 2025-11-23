@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Hotel, IRooms } from '../interface/IHotelList';
+import { IHotel, IRooms } from '../interface/IHotelList';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HotelService {
- public getHotelList(): Hotel[] {
+
+ public getHotelList(): IHotel[] {
     const hotels: Hotel[] = [
       { hotel_id: 1, name: '城市之光大飯店', price: 2800, imageUrl: 'assets/hotel-list/hotel1.png', rating: 4.5 ,location: '泰國',favorite:false,
         rooms: [
@@ -37,7 +38,7 @@ export class HotelService {
     ]; 
     return hotels;
  };
- public getTargethotel(hotel_id:number): Hotel {
+ public getTargethotel(hotel_id:number): IHotel {
     const target = this.getHotelList().find(item => item.hotel_id === hotel_id)
     if (target) {
       return target;
